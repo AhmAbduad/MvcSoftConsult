@@ -1,0 +1,261 @@
+﻿@model MvcSoftConsult.Models.EmployeeProfileDropdownViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Profile</title>
+    <style>
+        .auto-style1 {
+            width: 100px;
+        }
+
+        .auto-style2 {
+            width: 154px;
+        }
+
+        .auto-style4 {
+            height: 31px;
+        }
+
+        .auto-style5 {
+            width: 154px;
+            height: 31px;
+        }
+
+        .form-control {
+        }
+
+        .auto-style8 {
+            width: 100px;
+            height: 34px;
+        }
+
+        .auto-style9 {
+            height: 34px;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="/EmployeeProfile/Save">
+        <div class="container-fluid">
+            <h3 class="mb-4" style="background: linear-gradient(to right, #003366, #66ccff); color:white">Employee Profile</h3>
+
+            <input type="hidden" id="txtE_SNOHidden" />
+
+            <table class="table">
+                <tr>
+                    <td style="padding-left:100px; text-align:right">
+                        <label for="cmbEmp_LocID">Location:</label>
+                    </td>
+                    <td>
+                        <select name="Emp_LocID" class="form-control" id="cmbEmp_LocID">
+                            @foreach (var item in Model.Locations)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_LocID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                    <td class="auto-style2" style="padding-left:700px">
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("Refresh", "EmployeeProfile")'">Refresh</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style8" style="padding-left:100px; text-align:right">
+                        <label for="txtE_SID">Employee Id:</label>
+                    </td>
+                    <td class="auto-style9">
+                        <input id="txtE_SID" name="E_SID" class="form-control" type="text" style="width:100px; height:19px" required />
+                    </td>
+                    <td style="padding-left: 65px;" class="auto-style9">
+                        <div>
+                            <label for="cmbEmp_SurID" style="margin-left:200px; text-align:right">Sur Name:</label>
+                            <select name="Emp_SurID" class="form-control""  id="cmbEmp_SurID"     >
+                                @foreach (var item in Model.Salutations)
+                                {
+                                    <option value="@item.Value" @(item.Value == Model.Emp_SurID.ToString() ? "selected" : "")>@item.Text</option>
+                                }
+                            </select>
+                            <button type="submit" class="btn btn-success" style="margin-left:260px">Save</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style5" style="padding-left:100px; text-align:right">
+                        <label for="txtE_FName">Father/Hus Name:</label>
+                    </td>
+                    <td class="auto-style4">
+                        <input id="txtE_FName" name="E_FName" class="form-control" type="text" style="width:100px; height:19px" required />
+                    </td>
+                    <td class="auto-style5" style="padding-left:700px">
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='@Url.Action("List", "EmployeeProfile")'">List</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style1" style="padding-left:100px; text-align:right">
+                        <label for="txtE_Name">Full Name:</label>
+                    </td>
+                    <td colspan="2">
+                        <input id="txtE_Name" name="E_Name" class="form-control" type="text" style="width:100px; height:19px" required />
+                    </td>
+                </tr>
+            </table>
+
+            <hr class="my-4" />
+            <h3 style="color:blue">Nationality & IDs</h3>
+            <table class="table">
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_NationID">Nationality:</label></td>
+                    <td>
+                        <select name="Emp_NationID" class="form-control" id="cmbEmp_NationID">
+                            @foreach (var item in Model.Nations)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_NationID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                    <td class="auto-style2" style="padding-left:180px; text-align:right"><label for="dtpE_DOB">Date of Birth:</label></td>
+                    <td><input id="dtpE_DOB" name="E_DOB" class="form-control" type="date" style="width:100px" required /></td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_IdNo">ID No:</label></td>
+                    <td><input id="txtE_IdNo" name="E_IdNo" class="form-control" type="text" style="width:100px" required /></td>
+
+                    <td class="auto-style2" style="text-align:right"><label for="dtpE_IDExpire">ID Expiry Date:</label></td>
+                    <td><input id="dtpE_IDExpire" name="E_IDExpire" class="form-control" type="date" style="width:100px" required /></td>
+                </tr>
+            </table>
+
+            <hr class="my-4" />
+            <h3 style="color:blue">Basic Information</h3>
+            <table class="table">
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_SecID">Section:</label></td>
+                    <td>
+                        <select name="Emp_SecID" class="form-control" id="cmbEmp_SecID">
+                            @foreach (var item in Model.Sections)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_SecID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="cmbEmp_DesigID">Designation:</label></td>
+                    <td>
+                        <select name="Emp_DesigID" class="form-control"id="cmbEmp_DesigID">
+                            @foreach (var item in Model.Designations)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_DesigID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_Desig">Add Desig:</label></td>
+                    <td><input id="txtE_Desig" name="E_Desig" class="form-control" type="text" style="width:100px" required /></td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="txtE_Depart">Department:</label></td>
+                    <td><input id="txtE_Depart" name="E_Depart" class="form-control" type="text" style="width:100px" required /></td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_LeaveID">Leave Policy:</label></td>
+                    <td>
+
+                        <select name="Emp_LeaveID" class="form-control" id="cmbEmp_LeaveID">
+                            @foreach (var item in Model.Leaves)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_LeaveID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="cmbEmp_DptID">Department Level:</label></td>
+                    <td>
+                        <select name="Emp_DptID" class="form-control" id="cmbEmp_DptID">
+
+                            @foreach (var item in Model.Departments)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_DptID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_ReligionID">Religion:</label></td>
+                    <td>
+                        <select name="Emp_ReligionID" class="form-control" id="cmbEmp_ReligionID">
+
+                            @foreach (var item in Model.Religions)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_ReligionID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="cmbEmp_GenderID">Gender:</label></td>
+                    <td>
+                        <select name="Emp_GenderID" class="form-control" id="cmbEmp_GenderID">
+                            @foreach (var item in Model.Genders)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_GenderID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <hr class="my-4" />
+            <h3 style="color:blue">Employee Status</h3>
+            <table class="table">
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="dtpE_Join">Joining Date:</label></td>
+                    <td><input id="dtpE_Join" name="E_Join" class="form-control" type="date" style="width:100px" required /></td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="cmbEmp_GradeID">Grade:</label></td>
+                    <td>
+                        <select name="Emp_GradeID" class="form-control" id="cmbEmp_GradeID">
+                            @foreach (var item in Model.Grades)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_GradeID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_StatusID">Employment Status:</label></td>
+                    <td>
+                        <select name="Emp_StatusID" class="form-control" id="cmbEmp_StatusID">
+                            @foreach (var item in Model.Statuses)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_StatusID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="dtpE_CD">Confirmation Date:</label></td>
+                    <td><input id="dtpE_CD" name="E_CD" class="form-control" type="date" style="width:100px" required /></td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_JobStatusID">Job Status:</label></td>
+                    <td>
+                        <select name="Emp_JobStatusID" class="form-control" id="cmbEmp_JobStatusID">
+                            @foreach (var item in Model.JobStatuses)
+                            {
+                                <option value="@item.Value" @(item.Value == Model.Emp_JobStatusID.ToString() ? "selected" : "")>@item.Text</option>
+                            }
+                        </select>
+                    </td>
+
+                    <td style="padding-left:220px; text-align:right"><label for="dtpE_DL">Date of Leaving:</label></td>
+                    <td><input id="dtpE_DL" name="E_DL" class="form-control" type="date" style="width:100px" required /></td>
+                </tr>
+                <tr>
+                    <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_Reason">Reasons:</label></td>
+                    <td colspan="3"><textarea id="txtE_Reason" name="E_Reason" class="form-control" rows="3" required></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

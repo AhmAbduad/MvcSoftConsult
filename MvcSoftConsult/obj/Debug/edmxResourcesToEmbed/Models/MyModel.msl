@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="emp_dbModelStoreContainer" CdmEntityContainer="emp_dbEntities">
+    <EntitySetMapping Name="tblEmpDesigs">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpDesig">
+        <MappingFragment StoreEntitySet="tblEmpDesig">
+          <ScalarProperty Name="Desig_ID" ColumnName="Desig_ID" />
+          <ScalarProperty Name="Desig_Name" ColumnName="Desig_Name" />
+          <ScalarProperty Name="Desig_IsActive" ColumnName="Desig_IsActive" />
+          <ScalarProperty Name="Desig_CreatedDate" ColumnName="Desig_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpDptLevs">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpDptLev">
+        <MappingFragment StoreEntitySet="tblEmpDptLev">
+          <ScalarProperty Name="DptLev_ID" ColumnName="DptLev_ID" />
+          <ScalarProperty Name="DptLev_Code" ColumnName="DptLev_Code" />
+          <ScalarProperty Name="DptLev_Desc" ColumnName="DptLev_Desc" />
+          <ScalarProperty Name="DptIsActive" ColumnName="DptIsActive" />
+          <ScalarProperty Name="DptCreatedDate" ColumnName="DptCreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpEmployees">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpEmployee">
+        <MappingFragment StoreEntitySet="tblEmpEmployee">
+          <ScalarProperty Name="E_SNO" ColumnName="E_SNO" />
+          <ScalarProperty Name="E_SID" ColumnName="E_SID" />
+          <ScalarProperty Name="E_Name" ColumnName="E_Name" />
+          <ScalarProperty Name="E_FName" ColumnName="E_FName" />
+          <ScalarProperty Name="E_IdNo" ColumnName="E_IdNo" />
+          <ScalarProperty Name="E_DOB" ColumnName="E_DOB" />
+          <ScalarProperty Name="E_IDExpire" ColumnName="E_IDExpire" />
+          <ScalarProperty Name="E_Desig" ColumnName="E_Desig" />
+          <ScalarProperty Name="E_Depart" ColumnName="E_Depart" />
+          <ScalarProperty Name="E_Join" ColumnName="E_Join" />
+          <ScalarProperty Name="E_Reason" ColumnName="E_Reason" />
+          <ScalarProperty Name="E_CD" ColumnName="E_CD" />
+          <ScalarProperty Name="E_DL" ColumnName="E_DL" />
+          <ScalarProperty Name="Emp_DesigID" ColumnName="Emp_DesigID" />
+          <ScalarProperty Name="Emp_DptID" ColumnName="Emp_DptID" />
+          <ScalarProperty Name="Emp_StatusID" ColumnName="Emp_StatusID" />
+          <ScalarProperty Name="Emp_LocID" ColumnName="Emp_LocID" />
+          <ScalarProperty Name="Emp_SurID" ColumnName="Emp_SurID" />
+          <ScalarProperty Name="Emp_GenderID" ColumnName="Emp_GenderID" />
+          <ScalarProperty Name="Emp_GradeID" ColumnName="Emp_GradeID" />
+          <ScalarProperty Name="Emp_JobStatusID" ColumnName="Emp_JobStatusID" />
+          <ScalarProperty Name="Emp_LeaveID" ColumnName="Emp_LeaveID" />
+          <ScalarProperty Name="Emp_NationID" ColumnName="Emp_NationID" />
+          <ScalarProperty Name="Emp_ReligionID" ColumnName="Emp_ReligionID" />
+          <ScalarProperty Name="Emp_SecID" ColumnName="Emp_SecID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpGenders">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpGender">
+        <MappingFragment StoreEntitySet="tblEmpGender">
+          <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+          <ScalarProperty Name="Gender_Name" ColumnName="Gender_Name" />
+          <ScalarProperty Name="Gender_IsActive" ColumnName="Gender_IsActive" />
+          <ScalarProperty Name="Gender_CreatedDate" ColumnName="Gender_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpGrades">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpGrade">
+        <MappingFragment StoreEntitySet="tblEmpGrade">
+          <ScalarProperty Name="Grade_ID" ColumnName="Grade_ID" />
+          <ScalarProperty Name="Grade_Name" ColumnName="Grade_Name" />
+          <ScalarProperty Name="Grade_IsActive" ColumnName="Grade_IsActive" />
+          <ScalarProperty Name="Grade_CreatedDate" ColumnName="Grade_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpJobStatus">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpJobStatu">
+        <MappingFragment StoreEntitySet="tblEmpJobStatus">
+          <ScalarProperty Name="JobStatus_ID" ColumnName="JobStatus_ID" />
+          <ScalarProperty Name="JobStatus_Name" ColumnName="JobStatus_Name" />
+          <ScalarProperty Name="JobStatus_IsActive" ColumnName="JobStatus_IsActive" />
+          <ScalarProperty Name="JobStatus_CreatedDate" ColumnName="JobStatus_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpLeaves">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpLeave">
+        <MappingFragment StoreEntitySet="tblEmpLeave">
+          <ScalarProperty Name="Leave_ID" ColumnName="Leave_ID" />
+          <ScalarProperty Name="Leave_COD" ColumnName="Leave_COD" />
+          <ScalarProperty Name="Leave_DESC" ColumnName="Leave_DESC" />
+          <ScalarProperty Name="Leave_IsActive" ColumnName="Leave_IsActive" />
+          <ScalarProperty Name="Leave_CreatedDate" ColumnName="Leave_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpLocs">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpLoc">
+        <MappingFragment StoreEntitySet="tblEmpLoc">
+          <ScalarProperty Name="Loc_ID" ColumnName="Loc_ID" />
+          <ScalarProperty Name="Loc_Name" ColumnName="Loc_Name" />
+          <ScalarProperty Name="Loc_City" ColumnName="Loc_City" />
+          <ScalarProperty Name="Loc_IsActive" ColumnName="Loc_IsActive" />
+          <ScalarProperty Name="Loc_CreatedDate" ColumnName="Loc_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpNations">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpNation">
+        <MappingFragment StoreEntitySet="tblEmpNation">
+          <ScalarProperty Name="Nation_ID" ColumnName="Nation_ID" />
+          <ScalarProperty Name="Nation_Name" ColumnName="Nation_Name" />
+          <ScalarProperty Name="Nation_IsActive" ColumnName="Nation_IsActive" />
+          <ScalarProperty Name="Nation_CreatedDate" ColumnName="Nation_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpReligions">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpReligion">
+        <MappingFragment StoreEntitySet="tblEmpReligion">
+          <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+          <ScalarProperty Name="Religion_Name" ColumnName="Religion_Name" />
+          <ScalarProperty Name="Religion_IsActive" ColumnName="Religion_IsActive" />
+          <ScalarProperty Name="Religion_CreatedDate" ColumnName="Religion_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpSecs">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpSec">
+        <MappingFragment StoreEntitySet="tblEmpSec">
+          <ScalarProperty Name="Sec_ID" ColumnName="Sec_ID" />
+          <ScalarProperty Name="Sec_Name" ColumnName="Sec_Name" />
+          <ScalarProperty Name="Sec_IsActive" ColumnName="Sec_IsActive" />
+          <ScalarProperty Name="Sec_CreatedDate" ColumnName="Sec_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpStatus">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpStatu">
+        <MappingFragment StoreEntitySet="tblEmpStatus">
+          <ScalarProperty Name="Emp_Status_ID" ColumnName="Emp_Status_ID" />
+          <ScalarProperty Name="Emp_Status_Name" ColumnName="Emp_Status_Name" />
+          <ScalarProperty Name="Emp_Status_IsActive" ColumnName="Emp_Status_IsActive" />
+          <ScalarProperty Name="Emp_Status_CreatedDate" ColumnName="Emp_Status_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmpSurs">
+      <EntityTypeMapping TypeName="emp_dbModel.tblEmpSur">
+        <MappingFragment StoreEntitySet="tblEmpSur">
+          <ScalarProperty Name="Sur_ID" ColumnName="Sur_ID" />
+          <ScalarProperty Name="Sur_Title" ColumnName="Sur_Title" />
+          <ScalarProperty Name="Sur_IsActive" ColumnName="Sur_IsActive" />
+          <ScalarProperty Name="Sur_CreatedDate" ColumnName="Sur_CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="stpEmp_Employee" FunctionName="emp_dbModel.Store.stpEmp_Employee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="emp_dbModel.stpEmp_Employee_Result">
+          <ScalarProperty Name="E_Name" ColumnName="E_Name" />
+          <ScalarProperty Name="E_FName" ColumnName="E_FName" />
+          <ScalarProperty Name="E_DOB" ColumnName="E_DOB" />
+          <ScalarProperty Name="E_IdNo" ColumnName="E_IdNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

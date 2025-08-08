@@ -1,0 +1,992 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="emp_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblEmpDesig">
+          <Key>
+            <PropertyRef Name="Desig_ID" />
+          </Key>
+          <Property Name="Desig_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desig_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Desig_IsActive" Type="bit" />
+          <Property Name="Desig_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpDptLev">
+          <Key>
+            <PropertyRef Name="DptLev_ID" />
+          </Key>
+          <Property Name="DptLev_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DptLev_Code" Type="varchar" MaxLength="100" />
+          <Property Name="DptLev_Desc" Type="varchar" MaxLength="100" />
+          <Property Name="DptIsActive" Type="bit" />
+          <Property Name="DptCreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpEmployee">
+          <Key>
+            <PropertyRef Name="E_SNO" />
+          </Key>
+          <Property Name="E_SNO" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="E_SID" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="E_Name" Type="varchar" MaxLength="100" />
+          <Property Name="E_FName" Type="varchar" MaxLength="100" />
+          <Property Name="E_IdNo" Type="varchar" MaxLength="100" />
+          <Property Name="E_DOB" Type="datetime" />
+          <Property Name="E_IDExpire" Type="datetime" />
+          <Property Name="E_Desig" Type="varchar" MaxLength="100" />
+          <Property Name="E_Depart" Type="varchar" MaxLength="100" />
+          <Property Name="E_Join" Type="datetime" />
+          <Property Name="E_Reason" Type="varchar" MaxLength="200" />
+          <Property Name="E_CD" Type="datetime" />
+          <Property Name="E_DL" Type="datetime" />
+          <Property Name="Emp_DesigID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_DptID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_StatusID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_LocID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_SurID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_GenderID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_GradeID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_JobStatusID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_LeaveID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_NationID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_ReligionID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_SecID" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEmpGender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gender_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Gender_IsActive" Type="bit" />
+          <Property Name="Gender_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpGrade">
+          <Key>
+            <PropertyRef Name="Grade_ID" />
+          </Key>
+          <Property Name="Grade_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Grade_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Grade_IsActive" Type="bit" />
+          <Property Name="Grade_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpJobStatus">
+          <Key>
+            <PropertyRef Name="JobStatus_ID" />
+          </Key>
+          <Property Name="JobStatus_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobStatus_Name" Type="varchar" MaxLength="100" />
+          <Property Name="JobStatus_IsActive" Type="bit" />
+          <Property Name="JobStatus_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpLeave">
+          <Key>
+            <PropertyRef Name="Leave_ID" />
+          </Key>
+          <Property Name="Leave_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Leave_COD" Type="int" />
+          <Property Name="Leave_DESC" Type="varchar" MaxLength="100" />
+          <Property Name="Leave_IsActive" Type="bit" />
+          <Property Name="Leave_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpLoc">
+          <Key>
+            <PropertyRef Name="Loc_ID" />
+          </Key>
+          <Property Name="Loc_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Loc_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Loc_City" Type="varchar" MaxLength="100" />
+          <Property Name="Loc_IsActive" Type="bit" />
+          <Property Name="Loc_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpNation">
+          <Key>
+            <PropertyRef Name="Nation_ID" />
+          </Key>
+          <Property Name="Nation_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nation_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Nation_IsActive" Type="bit" />
+          <Property Name="Nation_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpReligion">
+          <Key>
+            <PropertyRef Name="Religion_ID" />
+          </Key>
+          <Property Name="Religion_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Religion_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Religion_IsActive" Type="bit" />
+          <Property Name="Religion_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpSec">
+          <Key>
+            <PropertyRef Name="Sec_ID" />
+          </Key>
+          <Property Name="Sec_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sec_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Sec_IsActive" Type="bit" />
+          <Property Name="Sec_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpStatus">
+          <Key>
+            <PropertyRef Name="Emp_Status_ID" />
+          </Key>
+          <Property Name="Emp_Status_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emp_Status_Name" Type="varchar" MaxLength="100" />
+          <Property Name="Emp_Status_IsActive" Type="bit" />
+          <Property Name="Emp_Status_CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblEmpSur">
+          <Key>
+            <PropertyRef Name="Sur_ID" />
+          </Key>
+          <Property Name="Sur_ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sur_Title" Type="varchar" MaxLength="10" />
+          <Property Name="Sur_IsActive" Type="bit" />
+          <Property Name="Sur_CreatedDate" Type="datetime" />
+        </EntityType>
+        <Association Name="Fk_tblEmp_tblEmpDesig">
+          <End Role="tblEmpDesig" Type="Self.tblEmpDesig" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpDesig">
+              <PropertyRef Name="Desig_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_DesigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpDptLev">
+          <End Role="tblEmpDptLev" Type="Self.tblEmpDptLev" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpDptLev">
+              <PropertyRef Name="DptLev_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_DptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpGender">
+          <End Role="tblEmpGender" Type="Self.tblEmpGender" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpGender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpGrade">
+          <End Role="tblEmpGrade" Type="Self.tblEmpGrade" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpGrade">
+              <PropertyRef Name="Grade_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_GradeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpJobStatus">
+          <End Role="tblEmpJobStatus" Type="Self.tblEmpJobStatus" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpJobStatus">
+              <PropertyRef Name="JobStatus_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_JobStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpLeave">
+          <End Role="tblEmpLeave" Type="Self.tblEmpLeave" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpLeave">
+              <PropertyRef Name="Leave_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_LeaveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpLoc">
+          <End Role="tblEmpLoc" Type="Self.tblEmpLoc" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpLoc">
+              <PropertyRef Name="Loc_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpNation">
+          <End Role="tblEmpNation" Type="Self.tblEmpNation" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpNation">
+              <PropertyRef Name="Nation_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_NationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpReligion">
+          <End Role="tblEmpReligion" Type="Self.tblEmpReligion" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpReligion">
+              <PropertyRef Name="Religion_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_ReligionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpSec">
+          <End Role="tblEmpSec" Type="Self.tblEmpSec" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpSec">
+              <PropertyRef Name="Sec_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_SecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpStatus">
+          <End Role="tblEmpStatus" Type="Self.tblEmpStatus" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpStatus">
+              <PropertyRef Name="Emp_Status_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpSur">
+          <End Role="tblEmpSur" Type="Self.tblEmpSur" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpSur">
+              <PropertyRef Name="Sur_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_SurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="stpEmp_Employee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nS_NO" Type="numeric" Mode="In" />
+          <Parameter Name="sS_ID" Type="varchar" Mode="In" />
+          <Parameter Name="sS_Name" Type="varchar" Mode="In" />
+          <Parameter Name="sS_FName" Type="varchar" Mode="In" />
+          <Parameter Name="sS_IdNo" Type="varchar" Mode="In" />
+          <Parameter Name="dS_DOB" Type="datetime" Mode="In" />
+          <Parameter Name="dS_IdExpire" Type="datetime" Mode="In" />
+          <Parameter Name="sS_Desig" Type="varchar" Mode="In" />
+          <Parameter Name="sS_Depart" Type="varchar" Mode="In" />
+          <Parameter Name="sS_Join" Type="datetime" Mode="In" />
+          <Parameter Name="sS_Reason" Type="varchar" Mode="In" />
+          <Parameter Name="dS_CD" Type="datetime" Mode="In" />
+          <Parameter Name="dS_DL" Type="datetime" Mode="In" />
+          <Parameter Name="nEmp_DesigID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_DptID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_StatusID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_LocID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_SurID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_GenderID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_GradeID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_JobStatusID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_LeaveID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_NationID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_ReligionID" Type="numeric" Mode="In" />
+          <Parameter Name="nEmp_SecID" Type="numeric" Mode="In" />
+          <Parameter Name="nIsUpdate" Type="numeric" Mode="In" />
+          <Parameter Name="PageNumber" Type="numeric" Mode="In" />
+          <Parameter Name="PageSize" Type="numeric" Mode="In" />
+        </Function>
+        <EntityContainer Name="emp_dbModelStoreContainer">
+          <EntitySet Name="tblEmpDesig" EntityType="Self.tblEmpDesig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpDptLev" EntityType="Self.tblEmpDptLev" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpEmployee" EntityType="Self.tblEmpEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpGender" EntityType="Self.tblEmpGender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpGrade" EntityType="Self.tblEmpGrade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpJobStatus" EntityType="Self.tblEmpJobStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpLeave" EntityType="Self.tblEmpLeave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpLoc" EntityType="Self.tblEmpLoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpNation" EntityType="Self.tblEmpNation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpReligion" EntityType="Self.tblEmpReligion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpSec" EntityType="Self.tblEmpSec" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpStatus" EntityType="Self.tblEmpStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEmpSur" EntityType="Self.tblEmpSur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_tblEmp_tblEmpDesig" Association="Self.Fk_tblEmp_tblEmpDesig">
+            <End Role="tblEmpDesig" EntitySet="tblEmpDesig" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpDptLev" Association="Self.Fk_tblEmp_tblEmpDptLev">
+            <End Role="tblEmpDptLev" EntitySet="tblEmpDptLev" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpGender" Association="Self.Fk_tblEmp_tblEmpGender">
+            <End Role="tblEmpGender" EntitySet="tblEmpGender" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpGrade" Association="Self.Fk_tblEmp_tblEmpGrade">
+            <End Role="tblEmpGrade" EntitySet="tblEmpGrade" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpJobStatus" Association="Self.Fk_tblEmp_tblEmpJobStatus">
+            <End Role="tblEmpJobStatus" EntitySet="tblEmpJobStatus" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpLeave" Association="Self.Fk_tblEmp_tblEmpLeave">
+            <End Role="tblEmpLeave" EntitySet="tblEmpLeave" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpLoc" Association="Self.Fk_tblEmp_tblEmpLoc">
+            <End Role="tblEmpLoc" EntitySet="tblEmpLoc" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpNation" Association="Self.Fk_tblEmp_tblEmpNation">
+            <End Role="tblEmpNation" EntitySet="tblEmpNation" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpReligion" Association="Self.Fk_tblEmp_tblEmpReligion">
+            <End Role="tblEmpReligion" EntitySet="tblEmpReligion" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpSec" Association="Self.Fk_tblEmp_tblEmpSec">
+            <End Role="tblEmpSec" EntitySet="tblEmpSec" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpStatus" Association="Self.Fk_tblEmp_tblEmpStatus">
+            <End Role="tblEmpStatus" EntitySet="tblEmpStatus" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpSur" Association="Self.Fk_tblEmp_tblEmpSur">
+            <End Role="tblEmpSur" EntitySet="tblEmpSur" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="emp_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblEmpDesig">
+          <Key>
+            <PropertyRef Name="Desig_ID" />
+          </Key>
+          <Property Name="Desig_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desig_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Desig_IsActive" Type="Boolean" />
+          <Property Name="Desig_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpDesig" FromRole="tblEmpDesig" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpDptLev">
+          <Key>
+            <PropertyRef Name="DptLev_ID" />
+          </Key>
+          <Property Name="DptLev_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DptLev_Code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DptLev_Desc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DptIsActive" Type="Boolean" />
+          <Property Name="DptCreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpDptLev" FromRole="tblEmpDptLev" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpEmployee">
+          <Key>
+            <PropertyRef Name="E_SNO" />
+          </Key>
+          <Property Name="E_SNO" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="E_SID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="E_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E_FName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E_IdNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E_DOB" Type="DateTime" Precision="3" />
+          <Property Name="E_IDExpire" Type="DateTime" Precision="3" />
+          <Property Name="E_Desig" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E_Depart" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="E_Join" Type="DateTime" Precision="3" />
+          <Property Name="E_Reason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="E_CD" Type="DateTime" Precision="3" />
+          <Property Name="E_DL" Type="DateTime" Precision="3" />
+          <Property Name="Emp_DesigID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_DptID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_StatusID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_LocID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_SurID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_GenderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_GradeID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_JobStatusID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_LeaveID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_NationID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_ReligionID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Emp_SecID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="tblEmpDesig" Relationship="Self.Fk_tblEmp_tblEmpDesig" FromRole="tblEmpEmployee" ToRole="tblEmpDesig" />
+          <NavigationProperty Name="tblEmpDptLev" Relationship="Self.Fk_tblEmp_tblEmpDptLev" FromRole="tblEmpEmployee" ToRole="tblEmpDptLev" />
+          <NavigationProperty Name="tblEmpGender" Relationship="Self.Fk_tblEmp_tblEmpGender" FromRole="tblEmpEmployee" ToRole="tblEmpGender" />
+          <NavigationProperty Name="tblEmpGrade" Relationship="Self.Fk_tblEmp_tblEmpGrade" FromRole="tblEmpEmployee" ToRole="tblEmpGrade" />
+          <NavigationProperty Name="tblEmpJobStatu" Relationship="Self.Fk_tblEmp_tblEmpJobStatus" FromRole="tblEmpEmployee" ToRole="tblEmpJobStatus" />
+          <NavigationProperty Name="tblEmpLeave" Relationship="Self.Fk_tblEmp_tblEmpLeave" FromRole="tblEmpEmployee" ToRole="tblEmpLeave" />
+          <NavigationProperty Name="tblEmpLoc" Relationship="Self.Fk_tblEmp_tblEmpLoc" FromRole="tblEmpEmployee" ToRole="tblEmpLoc" />
+          <NavigationProperty Name="tblEmpNation" Relationship="Self.Fk_tblEmp_tblEmpNation" FromRole="tblEmpEmployee" ToRole="tblEmpNation" />
+          <NavigationProperty Name="tblEmpReligion" Relationship="Self.Fk_tblEmp_tblEmpReligion" FromRole="tblEmpEmployee" ToRole="tblEmpReligion" />
+          <NavigationProperty Name="tblEmpSec" Relationship="Self.Fk_tblEmp_tblEmpSec" FromRole="tblEmpEmployee" ToRole="tblEmpSec" />
+          <NavigationProperty Name="tblEmpStatu" Relationship="Self.Fk_tblEmp_tblEmpStatus" FromRole="tblEmpEmployee" ToRole="tblEmpStatus" />
+          <NavigationProperty Name="tblEmpSur" Relationship="Self.Fk_tblEmp_tblEmpSur" FromRole="tblEmpEmployee" ToRole="tblEmpSur" />
+        </EntityType>
+        <EntityType Name="tblEmpGender">
+          <Key>
+            <PropertyRef Name="Gender_ID" />
+          </Key>
+          <Property Name="Gender_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gender_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Gender_IsActive" Type="Boolean" />
+          <Property Name="Gender_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpGender" FromRole="tblEmpGender" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpGrade">
+          <Key>
+            <PropertyRef Name="Grade_ID" />
+          </Key>
+          <Property Name="Grade_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Grade_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Grade_IsActive" Type="Boolean" />
+          <Property Name="Grade_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpGrade" FromRole="tblEmpGrade" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpJobStatu">
+          <Key>
+            <PropertyRef Name="JobStatus_ID" />
+          </Key>
+          <Property Name="JobStatus_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobStatus_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="JobStatus_IsActive" Type="Boolean" />
+          <Property Name="JobStatus_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpJobStatus" FromRole="tblEmpJobStatus" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpLeave">
+          <Key>
+            <PropertyRef Name="Leave_ID" />
+          </Key>
+          <Property Name="Leave_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Leave_COD" Type="Int32" />
+          <Property Name="Leave_DESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Leave_IsActive" Type="Boolean" />
+          <Property Name="Leave_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpLeave" FromRole="tblEmpLeave" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpLoc">
+          <Key>
+            <PropertyRef Name="Loc_ID" />
+          </Key>
+          <Property Name="Loc_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Loc_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Loc_City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Loc_IsActive" Type="Boolean" />
+          <Property Name="Loc_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpLoc" FromRole="tblEmpLoc" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpNation">
+          <Key>
+            <PropertyRef Name="Nation_ID" />
+          </Key>
+          <Property Name="Nation_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nation_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nation_IsActive" Type="Boolean" />
+          <Property Name="Nation_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpNation" FromRole="tblEmpNation" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpReligion">
+          <Key>
+            <PropertyRef Name="Religion_ID" />
+          </Key>
+          <Property Name="Religion_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Religion_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Religion_IsActive" Type="Boolean" />
+          <Property Name="Religion_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpReligion" FromRole="tblEmpReligion" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpSec">
+          <Key>
+            <PropertyRef Name="Sec_ID" />
+          </Key>
+          <Property Name="Sec_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sec_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Sec_IsActive" Type="Boolean" />
+          <Property Name="Sec_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpSec" FromRole="tblEmpSec" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpStatu">
+          <Key>
+            <PropertyRef Name="Emp_Status_ID" />
+          </Key>
+          <Property Name="Emp_Status_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emp_Status_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Emp_Status_IsActive" Type="Boolean" />
+          <Property Name="Emp_Status_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpStatus" FromRole="tblEmpStatus" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <EntityType Name="tblEmpSur">
+          <Key>
+            <PropertyRef Name="Sur_ID" />
+          </Key>
+          <Property Name="Sur_ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sur_Title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Sur_IsActive" Type="Boolean" />
+          <Property Name="Sur_CreatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tblEmpEmployees" Relationship="Self.Fk_tblEmp_tblEmpSur" FromRole="tblEmpSur" ToRole="tblEmpEmployee" />
+        </EntityType>
+        <Association Name="Fk_tblEmp_tblEmpDesig">
+          <End Role="tblEmpDesig" Type="Self.tblEmpDesig" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpDesig">
+              <PropertyRef Name="Desig_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_DesigID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpDptLev">
+          <End Role="tblEmpDptLev" Type="Self.tblEmpDptLev" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpDptLev">
+              <PropertyRef Name="DptLev_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_DptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpGender">
+          <End Role="tblEmpGender" Type="Self.tblEmpGender" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpGender">
+              <PropertyRef Name="Gender_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_GenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpGrade">
+          <End Role="tblEmpGrade" Type="Self.tblEmpGrade" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpGrade">
+              <PropertyRef Name="Grade_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_GradeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpJobStatus">
+          <End Role="tblEmpJobStatus" Type="Self.tblEmpJobStatu" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpJobStatus">
+              <PropertyRef Name="JobStatus_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_JobStatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpLeave">
+          <End Role="tblEmpLeave" Type="Self.tblEmpLeave" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpLeave">
+              <PropertyRef Name="Leave_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_LeaveID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpLoc">
+          <End Role="tblEmpLoc" Type="Self.tblEmpLoc" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpLoc">
+              <PropertyRef Name="Loc_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_LocID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpNation">
+          <End Role="tblEmpNation" Type="Self.tblEmpNation" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpNation">
+              <PropertyRef Name="Nation_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_NationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpReligion">
+          <End Role="tblEmpReligion" Type="Self.tblEmpReligion" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpReligion">
+              <PropertyRef Name="Religion_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_ReligionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpSec">
+          <End Role="tblEmpSec" Type="Self.tblEmpSec" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpSec">
+              <PropertyRef Name="Sec_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_SecID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpStatus">
+          <End Role="tblEmpStatus" Type="Self.tblEmpStatu" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpStatus">
+              <PropertyRef Name="Emp_Status_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_tblEmp_tblEmpSur">
+          <End Role="tblEmpSur" Type="Self.tblEmpSur" Multiplicity="1" />
+          <End Role="tblEmpEmployee" Type="Self.tblEmpEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmpSur">
+              <PropertyRef Name="Sur_ID" />
+            </Principal>
+            <Dependent Role="tblEmpEmployee">
+              <PropertyRef Name="Emp_SurID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="emp_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblEmpDesigs" EntityType="Self.tblEmpDesig" />
+          <EntitySet Name="tblEmpDptLevs" EntityType="Self.tblEmpDptLev" />
+          <EntitySet Name="tblEmpEmployees" EntityType="Self.tblEmpEmployee" />
+          <EntitySet Name="tblEmpGenders" EntityType="Self.tblEmpGender" />
+          <EntitySet Name="tblEmpGrades" EntityType="Self.tblEmpGrade" />
+          <EntitySet Name="tblEmpJobStatus" EntityType="Self.tblEmpJobStatu" />
+          <EntitySet Name="tblEmpLeaves" EntityType="Self.tblEmpLeave" />
+          <EntitySet Name="tblEmpLocs" EntityType="Self.tblEmpLoc" />
+          <EntitySet Name="tblEmpNations" EntityType="Self.tblEmpNation" />
+          <EntitySet Name="tblEmpReligions" EntityType="Self.tblEmpReligion" />
+          <EntitySet Name="tblEmpSecs" EntityType="Self.tblEmpSec" />
+          <EntitySet Name="tblEmpStatus" EntityType="Self.tblEmpStatu" />
+          <EntitySet Name="tblEmpSurs" EntityType="Self.tblEmpSur" />
+          <AssociationSet Name="Fk_tblEmp_tblEmpDesig" Association="Self.Fk_tblEmp_tblEmpDesig">
+            <End Role="tblEmpDesig" EntitySet="tblEmpDesigs" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpDptLev" Association="Self.Fk_tblEmp_tblEmpDptLev">
+            <End Role="tblEmpDptLev" EntitySet="tblEmpDptLevs" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpGender" Association="Self.Fk_tblEmp_tblEmpGender">
+            <End Role="tblEmpGender" EntitySet="tblEmpGenders" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpGrade" Association="Self.Fk_tblEmp_tblEmpGrade">
+            <End Role="tblEmpGrade" EntitySet="tblEmpGrades" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpJobStatus" Association="Self.Fk_tblEmp_tblEmpJobStatus">
+            <End Role="tblEmpJobStatus" EntitySet="tblEmpJobStatus" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpLeave" Association="Self.Fk_tblEmp_tblEmpLeave">
+            <End Role="tblEmpLeave" EntitySet="tblEmpLeaves" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpLoc" Association="Self.Fk_tblEmp_tblEmpLoc">
+            <End Role="tblEmpLoc" EntitySet="tblEmpLocs" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpNation" Association="Self.Fk_tblEmp_tblEmpNation">
+            <End Role="tblEmpNation" EntitySet="tblEmpNations" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpReligion" Association="Self.Fk_tblEmp_tblEmpReligion">
+            <End Role="tblEmpReligion" EntitySet="tblEmpReligions" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpSec" Association="Self.Fk_tblEmp_tblEmpSec">
+            <End Role="tblEmpSec" EntitySet="tblEmpSecs" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpStatus" Association="Self.Fk_tblEmp_tblEmpStatus">
+            <End Role="tblEmpStatus" EntitySet="tblEmpStatus" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_tblEmp_tblEmpSur" Association="Self.Fk_tblEmp_tblEmpSur">
+            <End Role="tblEmpSur" EntitySet="tblEmpSurs" />
+            <End Role="tblEmpEmployee" EntitySet="tblEmpEmployees" />
+          </AssociationSet>
+          <FunctionImport Name="stpEmp_Employee" ReturnType="Collection(emp_dbModel.stpEmp_Employee_Result)">
+            <Parameter Name="nS_NO" Mode="In" Type="Decimal" />
+            <Parameter Name="sS_ID" Mode="In" Type="String" />
+            <Parameter Name="sS_Name" Mode="In" Type="String" />
+            <Parameter Name="sS_FName" Mode="In" Type="String" />
+            <Parameter Name="sS_IdNo" Mode="In" Type="String" />
+            <Parameter Name="dS_DOB" Mode="In" Type="DateTime" />
+            <Parameter Name="dS_IdExpire" Mode="In" Type="DateTime" />
+            <Parameter Name="sS_Desig" Mode="In" Type="String" />
+            <Parameter Name="sS_Depart" Mode="In" Type="String" />
+            <Parameter Name="sS_Join" Mode="In" Type="DateTime" />
+            <Parameter Name="sS_Reason" Mode="In" Type="String" />
+            <Parameter Name="dS_CD" Mode="In" Type="DateTime" />
+            <Parameter Name="dS_DL" Mode="In" Type="DateTime" />
+            <Parameter Name="nEmp_DesigID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_DptID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_StatusID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_LocID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_SurID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_GenderID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_GradeID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_JobStatusID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_LeaveID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_NationID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_ReligionID" Mode="In" Type="Decimal" />
+            <Parameter Name="nEmp_SecID" Mode="In" Type="Decimal" />
+            <Parameter Name="nIsUpdate" Mode="In" Type="Decimal" />
+            <Parameter Name="PageNumber" Mode="In" Type="Decimal" />
+            <Parameter Name="PageSize" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="stpEmp_Employee_Result">
+          <Property Type="String" Name="E_Name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="E_FName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="E_DOB" Nullable="true" Precision="23" />
+          <Property Type="String" Name="E_IdNo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="emp_dbModelStoreContainer" CdmEntityContainer="emp_dbEntities">
+          <EntitySetMapping Name="tblEmpDesigs">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpDesig">
+              <MappingFragment StoreEntitySet="tblEmpDesig">
+                <ScalarProperty Name="Desig_ID" ColumnName="Desig_ID" />
+                <ScalarProperty Name="Desig_Name" ColumnName="Desig_Name" />
+                <ScalarProperty Name="Desig_IsActive" ColumnName="Desig_IsActive" />
+                <ScalarProperty Name="Desig_CreatedDate" ColumnName="Desig_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpDptLevs">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpDptLev">
+              <MappingFragment StoreEntitySet="tblEmpDptLev">
+                <ScalarProperty Name="DptLev_ID" ColumnName="DptLev_ID" />
+                <ScalarProperty Name="DptLev_Code" ColumnName="DptLev_Code" />
+                <ScalarProperty Name="DptLev_Desc" ColumnName="DptLev_Desc" />
+                <ScalarProperty Name="DptIsActive" ColumnName="DptIsActive" />
+                <ScalarProperty Name="DptCreatedDate" ColumnName="DptCreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpEmployees">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpEmployee">
+              <MappingFragment StoreEntitySet="tblEmpEmployee">
+                <ScalarProperty Name="E_SNO" ColumnName="E_SNO" />
+                <ScalarProperty Name="E_SID" ColumnName="E_SID" />
+                <ScalarProperty Name="E_Name" ColumnName="E_Name" />
+                <ScalarProperty Name="E_FName" ColumnName="E_FName" />
+                <ScalarProperty Name="E_IdNo" ColumnName="E_IdNo" />
+                <ScalarProperty Name="E_DOB" ColumnName="E_DOB" />
+                <ScalarProperty Name="E_IDExpire" ColumnName="E_IDExpire" />
+                <ScalarProperty Name="E_Desig" ColumnName="E_Desig" />
+                <ScalarProperty Name="E_Depart" ColumnName="E_Depart" />
+                <ScalarProperty Name="E_Join" ColumnName="E_Join" />
+                <ScalarProperty Name="E_Reason" ColumnName="E_Reason" />
+                <ScalarProperty Name="E_CD" ColumnName="E_CD" />
+                <ScalarProperty Name="E_DL" ColumnName="E_DL" />
+                <ScalarProperty Name="Emp_DesigID" ColumnName="Emp_DesigID" />
+                <ScalarProperty Name="Emp_DptID" ColumnName="Emp_DptID" />
+                <ScalarProperty Name="Emp_StatusID" ColumnName="Emp_StatusID" />
+                <ScalarProperty Name="Emp_LocID" ColumnName="Emp_LocID" />
+                <ScalarProperty Name="Emp_SurID" ColumnName="Emp_SurID" />
+                <ScalarProperty Name="Emp_GenderID" ColumnName="Emp_GenderID" />
+                <ScalarProperty Name="Emp_GradeID" ColumnName="Emp_GradeID" />
+                <ScalarProperty Name="Emp_JobStatusID" ColumnName="Emp_JobStatusID" />
+                <ScalarProperty Name="Emp_LeaveID" ColumnName="Emp_LeaveID" />
+                <ScalarProperty Name="Emp_NationID" ColumnName="Emp_NationID" />
+                <ScalarProperty Name="Emp_ReligionID" ColumnName="Emp_ReligionID" />
+                <ScalarProperty Name="Emp_SecID" ColumnName="Emp_SecID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpGenders">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpGender">
+              <MappingFragment StoreEntitySet="tblEmpGender">
+                <ScalarProperty Name="Gender_ID" ColumnName="Gender_ID" />
+                <ScalarProperty Name="Gender_Name" ColumnName="Gender_Name" />
+                <ScalarProperty Name="Gender_IsActive" ColumnName="Gender_IsActive" />
+                <ScalarProperty Name="Gender_CreatedDate" ColumnName="Gender_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpGrades">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpGrade">
+              <MappingFragment StoreEntitySet="tblEmpGrade">
+                <ScalarProperty Name="Grade_ID" ColumnName="Grade_ID" />
+                <ScalarProperty Name="Grade_Name" ColumnName="Grade_Name" />
+                <ScalarProperty Name="Grade_IsActive" ColumnName="Grade_IsActive" />
+                <ScalarProperty Name="Grade_CreatedDate" ColumnName="Grade_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpJobStatus">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpJobStatu">
+              <MappingFragment StoreEntitySet="tblEmpJobStatus">
+                <ScalarProperty Name="JobStatus_ID" ColumnName="JobStatus_ID" />
+                <ScalarProperty Name="JobStatus_Name" ColumnName="JobStatus_Name" />
+                <ScalarProperty Name="JobStatus_IsActive" ColumnName="JobStatus_IsActive" />
+                <ScalarProperty Name="JobStatus_CreatedDate" ColumnName="JobStatus_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpLeaves">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpLeave">
+              <MappingFragment StoreEntitySet="tblEmpLeave">
+                <ScalarProperty Name="Leave_ID" ColumnName="Leave_ID" />
+                <ScalarProperty Name="Leave_COD" ColumnName="Leave_COD" />
+                <ScalarProperty Name="Leave_DESC" ColumnName="Leave_DESC" />
+                <ScalarProperty Name="Leave_IsActive" ColumnName="Leave_IsActive" />
+                <ScalarProperty Name="Leave_CreatedDate" ColumnName="Leave_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpLocs">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpLoc">
+              <MappingFragment StoreEntitySet="tblEmpLoc">
+                <ScalarProperty Name="Loc_ID" ColumnName="Loc_ID" />
+                <ScalarProperty Name="Loc_Name" ColumnName="Loc_Name" />
+                <ScalarProperty Name="Loc_City" ColumnName="Loc_City" />
+                <ScalarProperty Name="Loc_IsActive" ColumnName="Loc_IsActive" />
+                <ScalarProperty Name="Loc_CreatedDate" ColumnName="Loc_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpNations">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpNation">
+              <MappingFragment StoreEntitySet="tblEmpNation">
+                <ScalarProperty Name="Nation_ID" ColumnName="Nation_ID" />
+                <ScalarProperty Name="Nation_Name" ColumnName="Nation_Name" />
+                <ScalarProperty Name="Nation_IsActive" ColumnName="Nation_IsActive" />
+                <ScalarProperty Name="Nation_CreatedDate" ColumnName="Nation_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpReligions">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpReligion">
+              <MappingFragment StoreEntitySet="tblEmpReligion">
+                <ScalarProperty Name="Religion_ID" ColumnName="Religion_ID" />
+                <ScalarProperty Name="Religion_Name" ColumnName="Religion_Name" />
+                <ScalarProperty Name="Religion_IsActive" ColumnName="Religion_IsActive" />
+                <ScalarProperty Name="Religion_CreatedDate" ColumnName="Religion_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpSecs">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpSec">
+              <MappingFragment StoreEntitySet="tblEmpSec">
+                <ScalarProperty Name="Sec_ID" ColumnName="Sec_ID" />
+                <ScalarProperty Name="Sec_Name" ColumnName="Sec_Name" />
+                <ScalarProperty Name="Sec_IsActive" ColumnName="Sec_IsActive" />
+                <ScalarProperty Name="Sec_CreatedDate" ColumnName="Sec_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpStatus">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpStatu">
+              <MappingFragment StoreEntitySet="tblEmpStatus">
+                <ScalarProperty Name="Emp_Status_ID" ColumnName="Emp_Status_ID" />
+                <ScalarProperty Name="Emp_Status_Name" ColumnName="Emp_Status_Name" />
+                <ScalarProperty Name="Emp_Status_IsActive" ColumnName="Emp_Status_IsActive" />
+                <ScalarProperty Name="Emp_Status_CreatedDate" ColumnName="Emp_Status_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEmpSurs">
+            <EntityTypeMapping TypeName="emp_dbModel.tblEmpSur">
+              <MappingFragment StoreEntitySet="tblEmpSur">
+                <ScalarProperty Name="Sur_ID" ColumnName="Sur_ID" />
+                <ScalarProperty Name="Sur_Title" ColumnName="Sur_Title" />
+                <ScalarProperty Name="Sur_IsActive" ColumnName="Sur_IsActive" />
+                <ScalarProperty Name="Sur_CreatedDate" ColumnName="Sur_CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="stpEmp_Employee" FunctionName="emp_dbModel.Store.stpEmp_Employee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="emp_dbModel.stpEmp_Employee_Result">
+                <ScalarProperty Name="E_Name" ColumnName="E_Name" />
+                <ScalarProperty Name="E_FName" ColumnName="E_FName" />
+                <ScalarProperty Name="E_DOB" ColumnName="E_DOB" />
+                <ScalarProperty Name="E_IdNo" ColumnName="E_IdNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

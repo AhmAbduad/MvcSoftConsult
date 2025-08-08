@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="acb8f62a03b0467396aa8683d1f8df63" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpDesig" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpDptLev" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpEmployee" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpGender" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpGrade" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpJobStatu" Width="1.5" PointX="0.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpLeave" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpLoc" Width="1.5" PointX="0.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpNation" Width="1.5" PointX="0.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpReligion" Width="1.5" PointX="0.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpSec" Width="1.5" PointX="0.75" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpStatu" Width="1.5" PointX="0.75" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="emp_dbModel.tblEmpSur" Width="1.5" PointX="0.75" PointY="36.125" IsExpanded="true" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpDesig" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpDptLev" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpGender" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpGrade" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpJobStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpLeave" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpLoc" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpNation" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpReligion" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpSec" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="emp_dbModel.Fk_tblEmp_tblEmpSur" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
