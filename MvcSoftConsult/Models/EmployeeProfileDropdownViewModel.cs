@@ -8,6 +8,8 @@ namespace MvcSoftConsult.Models
 {
     public class EmployeeProfileDropdownViewModel
     {
+        public int E_SNO {  get; set; }
+
         public string E_SID { get; set; }
 
         public string E_Name { get; set; }
@@ -44,6 +46,11 @@ namespace MvcSoftConsult.Models
         public int? Emp_NationID { get; set; }
         public int? Emp_ReligionID { get; set; }
         public int? Emp_SecID { get; set; }
+
+
+        public string LocationasString { get; set; }
+
+        public string JobStatusasString { get; set; }
 
 
 

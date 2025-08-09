@@ -1,0 +1,129 @@
+﻿@model List<MvcSoftConsult.Models.EmployeeProfileDropdownViewModel>
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form>
+        <h3 class="mb-4" style="background: linear-gradient(to right, #003366, #66ccff); color:white">Employee Profile</h3>
+
+        <table>
+            <tr>
+                <td class="" style="padding-left:100px; text-align:right"><label for="cmbEmp_LocID" width="100px">Location:</label></td>
+                <td>
+                    <select>
+                        <option>DHA</option>
+                    </select>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style8" style="padding-left:100px; text-align:right"><label for="EmpDptLst">Department</label></td>
+                <td>
+                    <select>
+                        <option>Department</option>
+                    </select>
+                </td>
+
+                <td style="padding-left: 65px;" class="auto-style9">
+                    <div>
+                        <label CssClass="me-2" style="margin-left:200px; text-align:right">Religion</label>
+                        <select>
+                            <option>Religion</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="auto-style8" style="padding-left:100px; text-align:right"><label>Level</label></td>
+                <td>
+                    <select>
+                        <option>Level</option>
+                    </select>
+                </td>
+                <td style="padding-left: 65px;" class="auto-style9">
+                    <div>
+                        <label CssClass="me-2" style="margin-left:190px; text-align:right">Job Status</label>
+                        <select>
+                            <option>Job Status</option>
+                        </select>
+                    </div>
+                </td>
+
+            </tr>
+
+            <tr>
+                <td class="auto-style8" style="padding-left:95px; text-align:right"><label>Section:</label> </td>
+                <td>
+                    <select>
+                        <option>Section</option>
+                    </select>
+                    <button>Search</button>
+                </td>
+                <td style="padding-left: 65px;" class="auto-style9">
+                    <div>
+                        <label CssClass="me-2" style="margin-left:210px; text-align:right">Gender</label>
+                        <select>
+                            <option>Gender</option>
+                        </select>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+        <table style="width:100%">
+            <tr>
+                <td><label>Page Info</label></td>
+                <td style="text-align:right">
+                    <a href="@Url.Action("FirstPage", "EmployeeProfile")" class="btn btn-primary">First</a>
+                    <a href="@Url.Action("PreviousPage", "EmployeeProfile")" class="btn btn-primary">Previous</a>
+                    <a href="@Url.Action("NextPage", "EmployeeProfile")" class="btn btn-primary">Next</a>
+                    <a href="@Url.Action("LastPage", "EmployeeProfile")" class="btn btn-primary">Last</a>
+
+
+                    
+                </td>
+            </tr>
+        </table>
+
+        <table class="table" style="width:100%;">
+            <thead style="background-color:blue; color:white;">
+                <tr>
+                    <th>Actions</th>
+                    <th>Emp ID</th>
+                    <th>Employee Name</th>
+                    <th>Father/Hus.Name</th>
+                    <th>Classification</th>
+                    <th>Job Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td style="text-align:center">
+                            @* Use form buttons or links depending on how you want to trigger Edit/Delete *@
+                            <a href="@Url.Action("Edit", "EmployeeProfile", new { id = emp.E_SNO })" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="@Url.Action("Delete", "EmployeeProfile", new { id = emp.E_SNO })" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure to delete?');">Delete</a>
+                        </td>
+                        <td style="text-align:center">@emp.E_SID</td>
+                        <td style="text-align:center">@emp.E_Name</td>
+                        <td style="text-align:center">@emp.E_FName</td>
+                        <td style="text-align:center">@emp.LocationasString</td>
+                        <td style="text-align:center">@emp.JobStatusasString</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+    </form>
+
+</body>
+</html>
