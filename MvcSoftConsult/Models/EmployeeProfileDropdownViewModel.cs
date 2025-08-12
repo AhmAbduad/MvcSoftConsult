@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,6 +49,8 @@ namespace MvcSoftConsult.Models
         public int? Emp_SecID { get; set; }
 
 
+        public List<EmployeeProfileDropdownViewModel> EmployeeList { get; set; }
+
         public string LocationasString { get; set; }
 
         public string JobStatusasString { get; set; }
@@ -68,3 +71,109 @@ namespace MvcSoftConsult.Models
         public IEnumerable<SelectListItem> Sections { get; set; }
     }
 }
+
+
+//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel.DataAnnotations;
+//using System.Web.Mvc;
+
+//namespace MvcSoftConsult.Models
+//{
+//    public class EmployeeProfileDropdownViewModel
+//    {
+//        public int E_SNO { get; set; }
+
+//        [Required(ErrorMessage = "Employee ID is required")]
+//        [StringLength(10, ErrorMessage = "Employee ID cannot exceed 10 characters")]
+//        public string E_SID { get; set; }
+
+//        [Required(ErrorMessage = "Employee name is required")]
+//        [StringLength(50)]
+//        public string E_Name { get; set; }
+
+//        [Required(ErrorMessage = "Father/Husband name is required")]
+//        [StringLength(50)]
+//        public string E_FName { get; set; }
+
+//        [Required(ErrorMessage = "ID Number is required")]
+//        [StringLength(20)]
+//        public string E_IdNo { get; set; }
+
+//        [DataType(DataType.Date)]
+//        public DateTime? E_DOB { get; set; }
+
+//        [DataType(DataType.Date)]
+//        public DateTime? E_IDExpire { get; set; }
+
+//        [StringLength(50)]
+//        public string E_Desig { get; set; }
+
+//        [StringLength(50)]
+//        public string E_Depart { get; set; }
+
+//        [DataType(DataType.Date)]
+//        public DateTime? E_Join { get; set; }
+
+//        [StringLength(200)]
+//        public string E_Reason { get; set; }
+
+//        [DataType(DataType.Date)]
+//        public DateTime? E_CD { get; set; }
+
+//        [DataType(DataType.Date)]
+//        public DateTime? E_DL { get; set; }
+
+//        [Required(ErrorMessage = "Designation is required")]
+//        public int? Emp_DesigID { get; set; }
+
+//        [Required(ErrorMessage = "Department is required")]
+//        public int? Emp_DptID { get; set; }
+
+//        [Required(ErrorMessage = "Status is required")]
+//        public int? Emp_StatusID { get; set; }
+
+//        [Required(ErrorMessage = "Location is required")]
+//        public int? Emp_LocID { get; set; }
+
+//        public int? Emp_SurID { get; set; }
+
+//        [Required(ErrorMessage = "Gender is required")]
+//        public int? Emp_GenderID { get; set; }
+
+//        [Required(ErrorMessage = "Grade is required")]
+//        public int? Emp_GradeID { get; set; }
+
+//        [Required(ErrorMessage = "Job Status is required")]
+//        public int? Emp_JobStatusID { get; set; }
+
+//        public int? Emp_LeaveID { get; set; }
+
+//        public int? Emp_NationID { get; set; }
+
+//        [Required(ErrorMessage = "Religion is required")]
+//        public int? Emp_ReligionID { get; set; }
+
+//        [Required(ErrorMessage = "Section is required")]
+//        public int? Emp_SecID { get; set; }
+
+//        public string LocationasString { get; set; }
+
+//        public string JobStatusasString { get; set; }
+
+//        public List<EmployeeProfileDropdownViewModel> EmployeeList { get; set; }
+
+//        public IEnumerable<SelectListItem> Designations { get; set; }
+//        public IEnumerable<SelectListItem> Departments { get; set; }
+//        public IEnumerable<SelectListItem> Statuses { get; set; }
+//        public IEnumerable<SelectListItem> Locations { get; set; }
+//        public IEnumerable<SelectListItem> Salutations { get; set; }
+//        public IEnumerable<SelectListItem> Genders { get; set; }
+//        public IEnumerable<SelectListItem> Grades { get; set; }
+//        public IEnumerable<SelectListItem> JobStatuses { get; set; }
+//        public IEnumerable<SelectListItem> Leaves { get; set; }
+//        public IEnumerable<SelectListItem> Nations { get; set; }
+//        public IEnumerable<SelectListItem> Religions { get; set; }
+//        public IEnumerable<SelectListItem> Sections { get; set; }
+//    }
+//}

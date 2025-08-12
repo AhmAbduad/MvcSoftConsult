@@ -55,6 +55,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_LocID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_LocID" class="text-danger"></span>
                 </td>
                 <td class="auto-style2" style="padding-left:700px">
                     <button type="button" class="" onclick="window.location.href='@Url.Action("Refresh", "EmployeeProfile")'">Refresh</button>
@@ -67,6 +68,7 @@
                 </td>
                 <td class="auto-style9">
                     <input id="txtE_SID" name="E_SID" value="@Model.E_SID" class="form-control" type="text" style="width:200px; height:40px" required />
+                    <span asp-validation-for="E_SID" class="text-danger"></span>
                 </td>
                 <td style="padding-left: 65px;" class="auto-style4">
                     <div>
@@ -77,6 +79,7 @@
                                 <option value="@item.Value" @(item.Value == Model.Emp_SurID.ToString() ? "selected" : "")>@item.Text</option>
                             }
                         </select>
+                        <span asp-validation-for="Emp_SurID" class="text-danger"></span>
                         <button type="submit" class="" style="margin-left:630px">Save</button>
                     </div>
                 </td>
@@ -87,6 +90,7 @@
                 </td>
                 <td class="auto-style4">
                     <input id="txtE_FName" name="E_FName" value="@Model.E_FName" class="form-control" type="text" style="width:200px; height:40px" required />
+                    <span asp-validation-for="E_FName" class="text-danger"></span>
                 </td>
                 <td class="auto-style5" style="padding-left:700px">
                     <button type="button" class="" onclick="window.location.href='@Url.Action("ShowList", "EmployeeProfile")'">List</button>
@@ -98,6 +102,7 @@
                 </td>
                 <td colspan="2">
                     <input id="txtE_Name" name="E_Name" value="@Model.E_Name" class="form-control" type="text" style="width:200px; height:40px" required />
+                    <span asp-validation-for="E_Name" class="text-danger"></span>
                 </td>
             </tr>
         </table>
@@ -114,16 +119,26 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_NationID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_NationID" class="text-danger"></span>
                 </td>
                 <td class="auto-style8" style="padding-left: 250px; text-align: right; white-space: nowrap; vertical-align: middle;"><label for="dtpE_DOB">Date of Birth:</label></td>
-                <td><input id="dtpE_DOB" name="E_DOB" value="@(Model.E_DOB.HasValue ? Model.E_DOB.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px; height:40px" required /></td>
+                <td>
+                    <input id="dtpE_DOB" name="E_DOB" value="@(Model.E_DOB.HasValue ? Model.E_DOB.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px; height:40px" required />
+                    <span asp-validation-for="E_DOB" class="text-danger"></span>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_IdNo">ID No:</label></td>
-                <td><input id="txtE_IdNo" name="E_IdNo" value="@Model.E_IdNo" class="form-control" type="text" style="width:200px" required /></td>
+                <td>
+                    <input id="txtE_IdNo" name="E_IdNo" value="@Model.E_IdNo" class="form-control" type="text" style="width:200px" required />
+                    <span asp-validation-for="E_IdNo" class="text-danger"></span>
+                </td>
 
                 <td class="auto-style2" style="text-align:right"><label for="dtpE_IDExpire">ID Expiry Date:</label></td>
-                <td><input id="dtpE_IDExpire" name="E_IDExpire" value="@(Model.E_IDExpire.HasValue ? Model.E_IDExpire.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required /></td>
+                <td>
+                    <input id="dtpE_IDExpire" name="E_IDExpire" value="@(Model.E_IDExpire.HasValue ? Model.E_IDExpire.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required />
+                    <span asp-validation-for="E_IDExpire" class="text-danger"></span>
+                </td>
             </tr>
         </table>
 
@@ -139,6 +154,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_SecID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_SecID" class="text-danger"></span>
                 </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="cmbEmp_DesigID">Designation:</label></td>
@@ -149,14 +165,21 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_DesigID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_DesigID" class="text-danger"></span>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_Desig">Add Desig:</label></td>
-                <td><input id="txtE_Desig" name="E_Desig" value="@Model.E_Desig" class="form-control" type="text" style="width:200px; height:40px" required /></td>
+                <td>    
+                    <input id="txtE_Desig" name="E_Desig" value="@Model.E_Desig" class="form-control" type="text" style="width:200px; height:40px" required />
+                    <span asp-validation-for="E_Desig" class="text-danger"></span>
+                </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="txtE_Depart">Department:</label></td>
-                <td><input id="txtE_Depart" name="E_Depart" value="@Model.E_Depart" class="form-control" type="text" style="width:200px" required /></td>
+                <td>
+                    <input id="txtE_Depart" name="E_Depart" value="@Model.E_Depart" class="form-control" type="text" style="width:200px" required />
+                    <span asp-validation-for="E_Depart" class="text-danger"></span>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_LeaveID">Leave Policy:</label></td>
@@ -168,6 +191,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_LeaveID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_LeaveID" class="text-danger"></span>
                 </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="cmbEmp_DptID">Department Level:</label></td>
@@ -179,6 +203,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_DptID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_DptID" class="text-danger"></span>
                 </td>
             </tr>
             <tr>
@@ -191,6 +216,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_ReligionID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_ReligionID" class="text-danger"></span>
                 </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="cmbEmp_GenderID">Gender:</label></td>
@@ -201,6 +227,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_GenderID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_GenderID" class="text-danger"></span>
                 </td>
             </tr>
         </table>
@@ -210,7 +237,10 @@
         <table style="border-collapse: collapse;">
             <tr>
                 <td class="auto-style2" style="padding-left: 100px; text-align: right; white-space: nowrap; vertical-align: middle;"><label for="dtpE_Join">Joining Date:</label></td>
-                <td><input id="dtpE_Join" name="E_Join" value="@(Model.E_Join.HasValue ? Model.E_Join.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required /></td>
+                <td>
+                    <input id="dtpE_Join" name="E_Join" value="@(Model.E_Join.HasValue ? Model.E_Join.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required />
+                    <span asp-validation-for="E_Join" class="text-danger"></span>
+                </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="cmbEmp_GradeID">Grade:</label></td>
                 <td>
@@ -220,6 +250,7 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_GradeID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_GradeID" class="text-danger"></span>
                 </td>
             </tr>
             <tr>
@@ -231,10 +262,14 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_StatusID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_StatusID" class="text-danger"></span>
                 </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="dtpE_CD">Confirmation Date:</label></td>
-                <td><input id="dtpE_CD" name="E_CD" value="@(Model.E_CD.HasValue ? Model.E_CD.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required /></td>
+                <td>
+                    <input id="dtpE_CD" name="E_CD" value="@(Model.E_CD.HasValue ? Model.E_CD.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required />
+                    <span asp-validation-for="E_CD" class="text-danger"></span>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="cmbEmp_JobStatusID">Job Status:</label></td>
@@ -245,14 +280,22 @@
                             <option value="@item.Value" @(item.Value == Model.Emp_JobStatusID.ToString() ? "selected" : "")>@item.Text</option>
                         }
                     </select>
+                    <span asp-validation-for="Emp_JobStatusID" class="text-danger"></span>
                 </td>
 
                 <td style="padding-left:220px; text-align:right"><label for="dtpE_DL">Date of Leaving:</label></td>
-                <td><input id="dtpE_DL" name="E_DL" value="@(Model.E_DL.HasValue ? Model.E_DL.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required /></td>
+                <td>
+                
+                     <input id="dtpE_DL" name="E_DL" value="@(Model.E_DL.HasValue ? Model.E_DL.Value.ToString("yyyy-MM-dd") : "")"  class="form-control" type="date" style="width:200px" required />
+                     <span asp-validation-for="E_DL" class="text-danger"></span>
+                </td>
             </tr>
             <tr>
                 <td class="auto-style2" style="padding-left:100px;text-align:right"><label for="txtE_Reason">Reasons:</label></td>
-                <td colspan="3"><textarea id="txtE_Reason" name="E_Reason" class="form-control" rows="3" required>@Model.E_Reason</textarea></td>
+                <td colspan="3">
+                    <textarea id="txtE_Reason" name="E_Reason" class="form-control" rows="3" required>@Model.E_Reason</textarea>
+                    <span asp-validation-for="E_Reason" class="text-danger"></span>
+                </td>
             </tr>
         </table>
     </form>

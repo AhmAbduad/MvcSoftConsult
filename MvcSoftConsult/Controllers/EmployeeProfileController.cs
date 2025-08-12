@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,6 @@ namespace MvcSoftConsult.Controllers
         [HttpGet]
         public ActionResult Index(EmployeeProfileDropdownViewModel model)
         {
-
             Session["PageNumber"] = 1;
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -122,23 +122,149 @@ namespace MvcSoftConsult.Controllers
             return RedirectToAction("Index");
         }
 
+        //public ActionResult ShowList()
+        //{
+
+        //    int PageNumber = Convert.ToInt32(Session["PageNumber"] ?? 1);
+
+        //    var viewModel = new EmployeeProfileDropdownViewModel();
+        //    viewModel.EmployeeList = new List<EmployeeProfileDropdownViewModel>();
+
+        //    // List<EmployeeProfileDropdownViewModel> employees = new List<EmployeeProfileDropdownViewModel>();
+
+        //    using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand("stpEmp_Employee", conn))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.AddWithValue("@nIsUpdate", 6);
+        //            cmd.Parameters.AddWithValue("@PageNumber", PageNumber);
+        //            cmd.Parameters.AddWithValue("@PageSize", PageSize);
+
+        //            // dates and text
+        //            cmd.Parameters.AddWithValue("@nS_NO", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_ID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_Name", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_FName", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_IdNo", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@dS_DOB", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@dS_IdExpire", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_Desig", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_Depart", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_Join", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@sS_Reason", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@dS_CD", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@dS_DL", DBNull.Value);
+
+
+        //            // Add NULL for dropdown values
+        //            cmd.Parameters.AddWithValue("@nEmp_DesigID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_DptID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_StatusID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_LocID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_SurID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_GenderID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_GradeID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_JobStatusID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_LeaveID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_NationID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_ReligionID", DBNull.Value);
+        //            cmd.Parameters.AddWithValue("@nEmp_SecID", DBNull.Value);
+
+
+        //            conn.Open();
+        //            SqlDataReader reader = cmd.ExecuteReader();
+
+        //            while (reader.Read())
+        //            {
+        //                viewModel.EmployeeList.Add(new EmployeeProfileDropdownViewModel
+        //                {
+        //                    E_SNO = Convert.ToInt32(reader["E_SNO"]),
+        //                    E_SID = reader["E_SID"].ToString(),
+        //                    E_Name = reader["E_Name"].ToString(),
+        //                    E_FName = reader["E_FName"].ToString(),
+        //                    LocationasString = reader["Location"].ToString(),
+        //                    JobStatusasString = reader["JobStatus"].ToString()
+
+        //                }); ;
+        //            }
+
+
+
+
+        //            reader.NextResult();
+        //            if (reader.Read())
+        //            {
+        //                int totalRecords = Convert.ToInt32(reader["TotalRecords"]);
+        //                Session["TotalRecords"] = totalRecords;
+        //                // lblPageInfo.Text = $"Showing {(pageNumber - 1) * PageSize + 1} to {Math.Min(pageNumber * PageSize, totalRecords)} of {totalRecords}";
+        //            }
+
+        //            viewModel.Designations = GetDropdownItems(conn, "SELECT Desig_ID, Desig_Name FROM tblEmpDesig");
+        //            viewModel.Departments = GetDropdownItems(conn, "SELECT DptLev_ID, DptLev_Desc FROM tblEmpDptLev");
+        //            viewModel.Statuses = GetDropdownItems(conn, "SELECT Emp_Status_ID, Emp_Status_Name FROM tblEmpStatus");
+        //            viewModel.Locations = GetDropdownItems(conn, "SELECT Loc_ID, Loc_Name FROM tblEmpLoc");
+        //            viewModel.Salutations = GetDropdownItems(conn, "SELECT Sur_ID, Sur_Title FROM tblEmpSur");
+        //            viewModel.Genders = GetDropdownItems(conn, "SELECT Gender_ID, Gender_Name FROM tblEmpGender");
+        //            viewModel.Grades = GetDropdownItems(conn, "SELECT Grade_ID, Grade_Name FROM tblEmpGrade");
+        //            viewModel.JobStatuses = GetDropdownItems(conn, "SELECT JobStatus_ID, JobStatus_Name FROM tblEmpJobStatus");
+        //            viewModel.Leaves = GetDropdownItems(conn, "SELECT Leave_ID, Leave_DESC FROM tblEmpLeave");
+        //            viewModel.Nations = GetDropdownItems(conn, "SELECT Nation_ID, Nation_Name FROM tblEmpNation");
+        //            viewModel.Religions = GetDropdownItems(conn, "SELECT Religion_ID, Religion_Name FROM tblEmpReligion");
+        //            viewModel.Sections = GetDropdownItems(conn, "SELECT Sec_ID, Sec_Name FROM tblEmpSec");
+
+        //        }
+        //    }
+        //    return View(viewModel);
+        //}
+
+
+        
         public ActionResult ShowList()
         {
+            string empLocIDStr = Request.Form["Emp_LocID"];
+            object empLocID = string.IsNullOrEmpty(empLocIDStr) ? DBNull.Value : (object)Convert.ToInt32(empLocIDStr);
+
+            string empDptIDStr = Request.Form["Emp_DptID"];
+            object empDptID = string.IsNullOrEmpty(empDptIDStr) ? DBNull.Value : (object)Convert.ToInt32(empDptIDStr);
+
+            string empReligionIDStr = Request.Form["Emp_ReligionID"];
+            object empReligionID = string.IsNullOrEmpty(empReligionIDStr) ? DBNull.Value : (object)Convert.ToInt32(empReligionIDStr);
+
+            string empGradeIDStr = Request.Form["Emp_GradeID"];
+            object empGradeID = string.IsNullOrEmpty(empGradeIDStr) ? DBNull.Value : (object)Convert.ToInt32(empGradeIDStr);
+
+            string empJobStatusIDStr = Request.Form["Emp_JobStatusID"];
+            object empJobStatusID = string.IsNullOrEmpty(empJobStatusIDStr) ? DBNull.Value : (object)Convert.ToInt32(empJobStatusIDStr);
+
+            string empSecIDStr = Request.Form["Emp_SecID"];
+            object empSecID = string.IsNullOrEmpty(empSecIDStr) ? DBNull.Value : (object)Convert.ToInt32(empSecIDStr);
+
+            string empGenderIDStr = Request.Form["Emp_GenderID"];
+            object empGenderID = string.IsNullOrEmpty(empGenderIDStr) ? DBNull.Value : (object)Convert.ToInt32(empGenderIDStr);
+
+
 
             int PageNumber = Convert.ToInt32(Session["PageNumber"] ?? 1);
+            int PageSize = 6; // you can change as needed
 
-            List<EmployeeProfileDropdownViewModel> employees = new List<EmployeeProfileDropdownViewModel>();
+            var viewModel = new EmployeeProfileDropdownViewModel
+            {
+                EmployeeList = new List<EmployeeProfileDropdownViewModel>()
+            };
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("stpEmp_Employee", conn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Required SP control params
                     cmd.Parameters.AddWithValue("@nIsUpdate", 6);
                     cmd.Parameters.AddWithValue("@PageNumber", PageNumber);
                     cmd.Parameters.AddWithValue("@PageSize", PageSize);
 
-                    // dates and text
+                    // NULLs for unused parameters
                     cmd.Parameters.AddWithValue("@nS_NO", DBNull.Value);
                     cmd.Parameters.AddWithValue("@sS_ID", DBNull.Value);
                     cmd.Parameters.AddWithValue("@sS_Name", DBNull.Value);
@@ -153,28 +279,26 @@ namespace MvcSoftConsult.Controllers
                     cmd.Parameters.AddWithValue("@dS_CD", DBNull.Value);
                     cmd.Parameters.AddWithValue("@dS_DL", DBNull.Value);
 
-
-                    // Add NULL for dropdown values
-                    cmd.Parameters.AddWithValue("@nEmp_DesigID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_DptID", DBNull.Value);
+                    // Actual filter parameters
+                    cmd.Parameters.AddWithValue("@nEmp_DesigID", DBNull.Value); // Add filter if needed
+                    cmd.Parameters.AddWithValue("@nEmp_DptID", empDptID);
                     cmd.Parameters.AddWithValue("@nEmp_StatusID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_LocID", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@nEmp_LocID", empLocID);
                     cmd.Parameters.AddWithValue("@nEmp_SurID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_GenderID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_GradeID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_JobStatusID", DBNull.Value);
+                    cmd.Parameters.AddWithValue("@nEmp_GenderID", empGenderID);
+                    cmd.Parameters.AddWithValue("@nEmp_GradeID", empGradeID);
+                    cmd.Parameters.AddWithValue("@nEmp_JobStatusID", empJobStatusID);
                     cmd.Parameters.AddWithValue("@nEmp_LeaveID", DBNull.Value);
                     cmd.Parameters.AddWithValue("@nEmp_NationID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_ReligionID", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_SecID", DBNull.Value);
-
+                    cmd.Parameters.AddWithValue("@nEmp_ReligionID", empReligionID);
+                    cmd.Parameters.AddWithValue("@nEmp_SecID", empSecID);
 
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        employees.Add(new EmployeeProfileDropdownViewModel
+                        viewModel.EmployeeList.Add(new EmployeeProfileDropdownViewModel
                         {
                             E_SNO = Convert.ToInt32(reader["E_SNO"]),
                             E_SID = reader["E_SID"].ToString(),
@@ -182,24 +306,34 @@ namespace MvcSoftConsult.Controllers
                             E_FName = reader["E_FName"].ToString(),
                             LocationasString = reader["Location"].ToString(),
                             JobStatusasString = reader["JobStatus"].ToString()
-
-                        }); ;
+                        });
                     }
 
-
-
-
-                    reader.NextResult();
-                    if (reader.Read())
+                    // NextResult: Get TotalRecords
+                    if (reader.NextResult() && reader.Read())
                     {
                         int totalRecords = Convert.ToInt32(reader["TotalRecords"]);
                         Session["TotalRecords"] = totalRecords;
-                        // lblPageInfo.Text = $"Showing {(pageNumber - 1) * PageSize + 1} to {Math.Min(pageNumber * PageSize, totalRecords)} of {totalRecords}";
                     }
 
+                    reader.Close(); // Ensure you close it before calling another command if needed
+
+                    // Populate dropdowns
+                    viewModel.Designations = GetDropdownItems(conn, "SELECT Desig_ID, Desig_Name FROM tblEmpDesig");
+                    viewModel.Departments = GetDropdownItems(conn, "SELECT DptLev_ID, DptLev_Desc FROM tblEmpDptLev");
+                    viewModel.Statuses = GetDropdownItems(conn, "SELECT Emp_Status_ID, Emp_Status_Name FROM tblEmpStatus");
+                    viewModel.Locations = GetDropdownItems(conn, "SELECT Loc_ID, Loc_Name FROM tblEmpLoc");
+                    viewModel.Salutations = GetDropdownItems(conn, "SELECT Sur_ID, Sur_Title FROM tblEmpSur");
+                    viewModel.Genders = GetDropdownItems(conn, "SELECT Gender_ID, Gender_Name FROM tblEmpGender");
+                    viewModel.Grades = GetDropdownItems(conn, "SELECT Grade_ID, Grade_Name FROM tblEmpGrade");
+                    viewModel.JobStatuses = GetDropdownItems(conn, "SELECT JobStatus_ID, JobStatus_Name FROM tblEmpJobStatus");
+                    viewModel.Leaves = GetDropdownItems(conn, "SELECT Leave_ID, Leave_DESC FROM tblEmpLeave");
+                    viewModel.Nations = GetDropdownItems(conn, "SELECT Nation_ID, Nation_Name FROM tblEmpNation");
+                    viewModel.Religions = GetDropdownItems(conn, "SELECT Religion_ID, Religion_Name FROM tblEmpReligion");
+                    viewModel.Sections = GetDropdownItems(conn, "SELECT Sec_ID, Sec_Name FROM tblEmpSec");
                 }
             }
-            return View(employees);
+            return View(viewModel); // Adjust if view name differs
         }
 
         [HttpGet]
@@ -323,55 +457,58 @@ namespace MvcSoftConsult.Controllers
         [HttpPost]
         public ActionResult Save(EmployeeProfileDropdownViewModel model)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("stpEmp_Employee", conn))
+           
+                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlCommand cmd = new SqlCommand("stpEmp_Employee", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                    bool isUpdate = model.E_SNO > 0;
+                        bool isUpdate = model.E_SNO > 0;
 
-                    cmd.Parameters.AddWithValue("@nIsUpdate", isUpdate ? 1 : 0); // 0 = insert, 1 = update
-                    cmd.Parameters.AddWithValue("@nS_NO", isUpdate ? (object)model.E_SNO : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nIsUpdate", isUpdate ? 1 : 0); // 0 = insert, 1 = update
+                        cmd.Parameters.AddWithValue("@nS_NO", isUpdate ? (object)model.E_SNO : DBNull.Value);
 
-                    cmd.Parameters.AddWithValue("@sS_ID", model.E_SID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_Name", model.E_Name ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_FName", model.E_FName ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_IdNo", model.E_IdNo ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@dS_DOB", model.E_DOB ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@dS_IdExpire", model.E_IDExpire ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_Desig", model.E_Desig ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_Depart", model.E_Depart ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_Join", model.E_Join ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@sS_Reason", model.E_Reason ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@dS_CD", model.E_CD ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@dS_DL", model.E_DL ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_ID", model.E_SID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_Name", model.E_Name ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_FName", model.E_FName ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_IdNo", model.E_IdNo ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@dS_DOB", model.E_DOB ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@dS_IdExpire", model.E_IDExpire ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_Desig", model.E_Desig ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_Depart", model.E_Depart ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_Join", model.E_Join ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@sS_Reason", model.E_Reason ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@dS_CD", model.E_CD ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@dS_DL", model.E_DL ?? (object)DBNull.Value);
 
-                    // other fields...
+                        // other fields...
 
-                    cmd.Parameters.AddWithValue("@nEmp_DesigID", model.Emp_DesigID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_DptID", model.Emp_DptID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_StatusID", model.Emp_StatusID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_LocID", model.Emp_LocID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_SurID", model.Emp_SurID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_GenderID", model.Emp_GenderID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_GradeID", model.Emp_GradeID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_JobStatusID", model.Emp_JobStatusID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_LeaveID", model.Emp_LeaveID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_NationID", model.Emp_NationID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_ReligionID", model.Emp_ReligionID ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nEmp_SecID", model.Emp_SecID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_DesigID", model.Emp_DesigID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_DptID", model.Emp_DptID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_StatusID", model.Emp_StatusID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_LocID", model.Emp_LocID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_SurID", model.Emp_SurID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_GenderID", model.Emp_GenderID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_GradeID", model.Emp_GradeID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_JobStatusID", model.Emp_JobStatusID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_LeaveID", model.Emp_LeaveID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_NationID", model.Emp_NationID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_ReligionID", model.Emp_ReligionID ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@nEmp_SecID", model.Emp_SecID ?? (object)DBNull.Value);
 
 
-                    cmd.Parameters.AddWithValue("@PageNumber", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@PageSize", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PageNumber", DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PageSize", DBNull.Value);
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-            }
+            
 
             EmployeeProfileDropdownViewModel dummymodel = new EmployeeProfileDropdownViewModel();
 
@@ -406,6 +543,9 @@ namespace MvcSoftConsult.Controllers
             return RedirectToAction("ShowList");
         }
 
-
+        public ActionResult Search()
+        {
+            return RedirectToAction("ShowList");
+        }
     }
 }
